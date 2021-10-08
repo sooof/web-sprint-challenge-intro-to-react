@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../constants'
-
 // import './App.css';
 import styled from 'styled-components';
 
@@ -18,13 +17,16 @@ const StyledFriend = styled.div`
 `
 
 
-const Details = (props) => {
+// const Details = (props) => {
+function Details(props) {
     const { characterId, close } = props
     const [details, setDetails] = useState(null)
   
 
 
-    console.log(characterId)
+    console.log("Datail "+characterId)
+    console.log(`${BASE_URL}/people/${characterId}`)
+
     useEffect(() => {
         axios.get(`${BASE_URL}/people/${characterId}`)
           .then(res => { setDetails(res.data) })
@@ -49,8 +51,7 @@ const Details = (props) => {
               </ul>
               </>
             }
-            <button >Close</button>
-            {/* </> */}
+            <button onClick={close}>Close</button>
           </StyledFriend>
     )
   }

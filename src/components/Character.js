@@ -16,15 +16,19 @@ const StyledFriend = styled.div`
 `
 
 
-const Characters = (info, action ) => {
+// const Characters = (info, action ) => {
+function Characters (props) {
+    const { info,  action} = props
+
+    console.log("Characters info ="+info.id)
     return (
         
          <StyledFriend>
-            {/* {info.name} */}
-            Luke Skywalker
-            <button onClick={() => {}}>
-                See details  
-                {/* 19BBY8 */}
+            {info.name} ## {info.id}
+           
+            <button onClick={() => action(info.id)}>
+            {info.birth_year}
+                {/* See details   */}
             </button>
             {/* <Details /> */}
         </StyledFriend>

@@ -7,14 +7,10 @@ import './App.css';
 
 
 
-
-console.log(BASE_URL)
-
-
-
-const App = (id) => {
+// const App = () => {
+  function App() {
   const [characters, setCharacters] = useState([])
-  const [currentCharacterId, setCurrentCharacterId] = useState('1')
+  const [currentCharacterId, setCurrentCharacterId] = useState('')
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -23,17 +19,18 @@ const App = (id) => {
   // sync up with, if any.
 
   const openDetails = id => {
+     console.log("currentCharacterId = "+ currentCharacterId)
     setCurrentCharacterId(id)
   }
-  console.log(currentCharacterId)
+  
+  console.log("currentCharacterId = "+ currentCharacterId)
+
   const closeDetails = () => {
     setCurrentCharacterId(null)
   }
 
-  console.log(`https://swapi.dev/api/people/`)
-  console.log(`${BASE_URL}/people/`)
   useEffect(() => {
-    axios.get(`${BASE_URL}/people/`)
+    axios.get(`${BASE_URL}/people`)
       .then(res => {
         console.log(res.data)
         setCharacters(res.data)
@@ -44,19 +41,18 @@ const App = (id) => {
   }, [])
 
   return (
-    <div className="App">
+    <div className="container">
       <h1 className="Header">REACT WARS </h1>
       {
-        characters.map((ch) => {
-            return <Characters key={ch.id} info={ch} action={openDetails} />
+        characters.map(fr => {
+          return <Characters key={fr.id} info={fr} action={openDetails} />
         })
       }
       {
-        
         currentCharacterId && <Details characterId={currentCharacterId} close={closeDetails} />
       }
     </div>
-  );
+  )
 }
 
 export default App;

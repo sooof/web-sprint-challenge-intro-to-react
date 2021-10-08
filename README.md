@@ -79,6 +79,18 @@ After finishing your required elements, you can push your work further. These go
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Put your answers underneath the questions:
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
+
+    A JavaScript library for building user interfaces, Solve The Problem Of Data Changing Over Time.  That can take care of a lot of the work for us
+
 1. Describe component state.
+
+    state are both plain JavaScript objects.The state starts with a default value when a Component mounts and then suffers from mutations in time (mostly generated from user events). It's a serializable* representation of one point in time—a snapshot.
+    
+        
 1. Describe props.
+
+    props (short for “properties”) props (short for properties) are a Component's configuration, its options if you may. They are received from above and immutable as far as the Component receiving them is concerned.
+
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+
+    ? A side effect is anything that affects something outside the scope of the function being executed. Fetching data from an API, timers, logging, and manually manipulating the DOM are all examples of side effects. There are two categories of side effects in React components - those that don't require cleanup and those that do require cleanup. We will discuss effects that require cleanup later in this module.
