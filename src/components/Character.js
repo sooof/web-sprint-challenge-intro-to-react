@@ -2,7 +2,7 @@
 
 import React from 'react';
 // import './App.css';
-import Details from './Detail'
+//import Details from './Detail'
 import styled from 'styled-components';
 
 
@@ -16,18 +16,20 @@ const StyledFriend = styled.div`
 `
 
 
-const Characters = () => {
+const Characters = (info, action ) => {
     return (
-      <StyledFriend>
-      
-      {/* {info.name} */}
-     
-      Luke Skywalker
-      <button onClick={() => {}}>
-        See details  19BBY
-      </button>
-      <Details />
-      </StyledFriend>
+        
+         <StyledFriend>
+            {/* {info.name} */}
+            Luke Skywalker
+            <button onClick={() => {}}>
+                See details  
+                {/* 19BBY8 */}
+            </button>
+            {/* <Details /> */}
+        </StyledFriend>
+        
+
     )
   }
 

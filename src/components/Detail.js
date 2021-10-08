@@ -1,46 +1,57 @@
 // Write your Character component here
 
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { BASE_URL } from '../constants'
+
 // import './App.css';
 import styled from 'styled-components';
 
 
 
 const StyledFriend = styled.div`
-//   width: 60%;
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 8px;
-//   border-bottom: 2px solid red;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 2px solid #dee0da;;
 `
 
 
-const Details = () => {
+const Details = (props) => {
+    const { characterId, close } = props
+    const [details, setDetails] = useState(null)
+  
+
+
+    console.log(characterId)
+    useEffect(() => {
+        axios.get(`${BASE_URL}/people/${characterId}`)
+          .then(res => { setDetails(res.data) })
+          .catch(err => { debugger }) // eslint-disable-line
+      }, [characterId])
+
     return (
-      <StyledFriend>
-      
-    
-      {
-              <div className='container'>
-            
-              {
-                
-                <>
-                  {/* <p>details.name is details.age</p>
-                  <p>email is details.email</p> */}
-                   likes:
-                  <ul>
-                    {
-                    //   details.hobbies.map((like, idx) => <li key={idx}>{like}</li>)
-                    }
-                  </ul>
-                </>
-              }
-              <button >Close</button>
-            </div>
-      }
-      
-      </StyledFriend>
+        <StyledFriend  className='container'>
+            <h2>Details:</h2>
+            {
+              details &&
+              <>
+              <ul className="details">
+                <li>{details.name}</li>
+                <li>Gender: {details.gender}</li>
+                <li>Height: {details.height}</li>
+                <li>Mass: {details.mass}</li>
+                <li>Birth Year: {details.birth_year}</li>
+                <li>Eye Color: {details.eye_color}</li>
+                <li>Hair Color: {details.hair_color}</li>
+                <li>Skin Color: {details.skin_color}</li>
+              </ul>
+              </>
+            }
+            <button >Close</button>
+            {/* </> */}
+          </StyledFriend>
     )
   }
 
